@@ -16,11 +16,13 @@ connectDB();
 
 // Routes
 app.use('/api/admin/auth', require('./routes/auth/adminAuthRoutes'));
+app.use('/api/admin', require('./routes/admin/adminRoutes'));
 // app.use('/api/admin/categories', require('./routes/categories'));
 // app.use('/api/admin/products', require('./routes/products'));
 // app.use('/api/admin/users', require('./routes/users'));
 // app.use('/api/admin/orders', require('./routes/orders'));
 // app.use('/api/admin/wallets', require('./routes/wallets'));
+
 
 // error handler
 app.use((err, req, res, next) => {
