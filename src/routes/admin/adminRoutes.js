@@ -16,7 +16,7 @@ router.post("/register", createAdmin);
 router.post("/login", loginAdmin);
 
 // CRUD
-router.get("/", getAdmins);
+router.get("/list", getAdmins);
 router.get("/:id", getAdminById);
 router.put("/:id", updateAdmin);
 router.delete("/:id", deleteAdmin);

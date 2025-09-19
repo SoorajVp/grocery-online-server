@@ -28,11 +28,11 @@ exports.createAdmin = async (req, res) => {
         }
 
         const admin = new Admin({ name, email, mobile, password, role });
-        await admin.save();
+        const createdAdmin = await admin.save();
 
         res.status(201).json({
             message: "Admin created successfully",
-            admin: { id: admin._id, name: admin.name, email: admin.email, role: admin.role }
+            admin: createdAdmin,
         });
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error.message });

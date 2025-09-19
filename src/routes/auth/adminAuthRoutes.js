@@ -4,7 +4,6 @@ const router = express.Router();
 
 router.post('/login', admiLogin);
 
-router.get('/login', (req, res) => res.send("heyyyyy"));
 
 
 module.exports = router;
