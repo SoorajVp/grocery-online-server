@@ -1,19 +1,52 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    sku: { type: String, unique: true }, // unique stock keeping unit
+    name: {
+        type: String,
+        required: true
+    },
+    sku: {
+        type: String,
+        unique: true
+    }, // unique stock keeping unit
     description: String,
-    categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
-    images: [{ type: String }], // Cloudinary URLs instead of local file paths
-    price: { type: Number, required: true },
-    quantity: { type: Number, default: 0 }, // stock
+    
+    categories: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
+    }],
+    images: [{
+        type: String
+    }], // Cloudinary URLs instead of local file paths
+    price: {
+        type: Number,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true
+    }, 
+    discount: {
+        type: Number,
+        default: 0
+    }, 
+    // stock
     unit: { type: String }, // e.g., "1 kg"
-    active: { type: Boolean, default: true },
+    active: { 
+        type: Boolean, 
+        default: true 
+    },
 
     // admin references
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin', required: true },
-    updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' }
+    createdBy: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Admin', 
+        required: true 
+    },
+    updatedBy: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Admin' 
+    }
 }, { timestamps: true });
 
 // Ensure min 4 images at the model layer (validation)
